@@ -1,2 +1,8 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+﻿var text = "";
+while(text != "exit")
+{
+    Console.WriteLine("Чтобы выйти из цикла введите слово exit");
+    text = Console.ReadLine().ToLower();
+}
+
+Console.ReadKey(true);

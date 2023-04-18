@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32825.248
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NVA_Task_01", "NVA_Task_01\NVA_Task_01.csproj", "{D058D22B-7AAC-4A18-B0F3-4F50BD9A5DC5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NVA_Task_01", "NVA_Task_01\NVA_Task_01.csproj", "{D058D22B-7AAC-4A18-B0F3-4F50BD9A5DC5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NVA_Task_02", "NVA_Task_02\NVA_Task_02.csproj", "{A0396169-D9EB-4383-8362-C4D95885E9F2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NVA_Task_02", "NVA_Task_02\NVA_Task_02.csproj", "{A0396169-D9EB-4383-8362-C4D95885E9F2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NVA_Task_03", "NVA_Task_03\NVA_Task_03.csproj", "{FCF8A3A9-D1C0-4B36-B409-0512208C5EC5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{A0396169-D9EB-4383-8362-C4D95885E9F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A0396169-D9EB-4383-8362-C4D95885E9F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A0396169-D9EB-4383-8362-C4D95885E9F2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FCF8A3A9-D1C0-4B36-B409-0512208C5EC5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FCF8A3A9-D1C0-4B36-B409-0512208C5EC5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FCF8A3A9-D1C0-4B36-B409-0512208C5EC5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FCF8A3A9-D1C0-4B36-B409-0512208C5EC5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
