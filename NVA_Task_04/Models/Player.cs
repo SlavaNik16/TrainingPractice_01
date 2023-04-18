@@ -6,18 +6,18 @@ using System.Threading.Tasks;
 
 namespace NVA_Task_04.Models
 {
-    public class Boss
+    public class Player
     {
         public string Name { get; set; }
         public int Attack { get; set; }
         public int HP { get; set; }
         public int MP { get; set; }
 
-        public Boss(string name)
+        public Player(string name)
         {
             Name = name;
-            Attack = new Random().Next(20, 30);
-            HP = new Random().Next(900, 1500);
+            Attack = new Random().Next(10,14);
+            HP = new Random().Next(800, 1300);
             MP = 0;
         }
     }
