@@ -1,9 +1,13 @@
 ﻿
 using NVA_Task_04.Models;
+using System.Diagnostics;
+using System.Drawing;
 using System.Numerics;
 
 class Programm {
 
+    private static int step = 1;
+    private static int mpRecovery = 3;
     static void Main(string[] arg)
     {
         Console.WriteLine("Игра - Победи БОССА");
@@ -74,13 +78,36 @@ class Programm {
         while (opponent.HP > 0)
         {
             ShowCharacterWithBoss(player, opponent);
+            break;
         }
     }
     static void Player_VS_Guard(Player player, Guardians opponent)
     {
         while (opponent.HP > 0)
         {
-            ShowCharacterWithGuart(player, opponent);
+            Console.WriteLine($"\nНачался {step} день битвы: ");
+            if (player.Pass == 0)
+            {
+                player.MP += mpRecovery;
+                ShowCharacterWithGuart(player, opponent);
+                Console.WriteLine($"Прочитайте заклинание: {player.getSpells()}");
+                Console.Write("Заклинание: ");   
+                Console.BackgroundColor = ConsoleColor.Green;
+                var spell = Console.ReadLine();
+                Console.BackgroundColor = ConsoleColor.White;
+                player.Spells(spell, opponent);
+            }
+            else
+            {
+                Console.WriteLine("Игрок пропускает день.");
+                player.Pass -= 1;
+            }
+            opponent.Spell(player);
+            if(player.HP <= 0)
+            {
+                End();
+            }
+            step += 1;
         }
     }
     static void Run()
@@ -88,6 +115,10 @@ class Programm {
         Console.WriteLine("Вы убежали!!! Вы не проиграли, но и не выиграли!\n" +
             "Попытайтесь воспользоваться своим опытом для следующего вашего сражения\n" +
             "в опаснейшем подземелье!");
+        Environment.Exit(0);
+    }
+    static void End(){
+        Console.WriteLine($"\t\tВы проиграли!\n\t\tВас убили!!! Всего вы прожили {step} дн(-я,-ей) битвы");
         Environment.Exit(0);
     }
 
@@ -105,6 +136,6 @@ class Programm {
         Console.WriteLine($"\n\tИгрок - {player.Name}" + $"\t\t\tСтражник - {opponent.Name}\n" +
           $"\tЗдоровье - {player.HP}" + $"\t\t\tЗдоровье - {opponent.HP}\n" +
           $"\tАтака - {player.Attack}" + $"\t\t\tАтака - {opponent.Attack}\n" +
-          $"\tМана - {player.MP}");
+          $"\tМана - {player.MP}\n");
     }
 }
