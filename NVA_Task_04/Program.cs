@@ -92,18 +92,23 @@ class Programm {
                 ShowCharacterWithGuart(player, opponent);
                 Console.WriteLine($"Прочитайте заклинание: {player.getSpells()}");
                 Console.Write("Заклинание: ");   
-                Console.BackgroundColor = ConsoleColor.Green;
+                Console.ForegroundColor = ConsoleColor.Green;
                 var spell = Console.ReadLine();
-                Console.BackgroundColor = ConsoleColor.White;
+                Console.ForegroundColor = ConsoleColor.Yellow;
                 player.Spells(spell, opponent);
+                Console.ForegroundColor = ConsoleColor.White;
             }
             else
             {
-                Console.WriteLine("Игрок пропускает день.");
+                Console.ForegroundColor = ConsoleColor.Blue;
+                Console.WriteLine("\nИгрок пропускает день.");
+                Console.ForegroundColor = ConsoleColor.White;
                 player.Pass -= 1;
             }
+            Console.ForegroundColor = ConsoleColor.Red;
             opponent.Spell(player);
-            if(player.HP <= 0)
+            Console.ForegroundColor = ConsoleColor.White;
+            if (player.HP <= 0)
             {
                 End();
             }

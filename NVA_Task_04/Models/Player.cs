@@ -42,14 +42,14 @@ namespace NVA_Task_04.Models
             switch (spell.ToUpper())
             {
                 case "ATTACHI":
-                    Console.WriteLine($"\nИгрок наносит монстру - {enemy.Name} урон в размере {Attack}");
+                    Console.WriteLine($"\nИгрок наносит Стражнику - {enemy.Name} урон в размере {Attack}");
                     enemy.HP -= Attack;
                     break;
                 case "HELTHA" :
                     if (MP >= 8) {
                         var hp = new Random().Next(30, 50);
                         Console.WriteLine($"\nИгрок восстанавливает себе HP в размере {hp}");
-                        enemy.HP -= Attack;
+                        HP += hp;
                         MP -= 8;
                         break;
                     }
