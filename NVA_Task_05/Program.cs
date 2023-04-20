@@ -25,9 +25,9 @@ class Program
 
         try
         {
-            string[] nenushno = File.ReadAllLines($"Res/maze{otvet}.txt");
-            string[] nenushno1 = File.ReadAllLines($"Res/maze{otvet}.Pos.txt");
-            string[] nenushno2 = File.ReadAllLines($"Res/maze{otvet}.tum.txt");
+            string[] nenushno = File.ReadAllLines($"../../../Res/maze{otvet}.txt");
+            string[] nenushno1 = File.ReadAllLines($"../../../Res/maze{otvet}.Pos.txt");
+            string[] nenushno2 = File.ReadAllLines($"../../../Res/maze{otvet}.tum.txt");
         }
         catch (FileNotFoundException)
         {
@@ -35,7 +35,7 @@ class Program
             Environment.Exit(0);
         }
 
-        string[] str = File.ReadAllLines($"Res/maze{otvet}.txt");
+        string[] str = File.ReadAllLines($"../../../Res/maze{otvet}.txt");
         int[,] map = new int[str.Length, str[0].Split(' ').Length];
         for (i = 0; i < str.Length; i++)
         {
@@ -45,7 +45,7 @@ class Program
             n = str2.Length;
         }
 
-        string[] pos = File.ReadAllLines($"Res/maze{otvet}.Pos.txt");
+        string[] pos = File.ReadAllLines($"../../../Res/maze{otvet}.Pos.txt");
         int[,] map_pos = new int[pos.Length, pos[0].Split(' ').Length];
         for (i = 0; i < pos.Length; i++)
         {
@@ -55,7 +55,7 @@ class Program
             n1 = pos2.Length;
         }
 
-        string[] tum = File.ReadAllLines($"Res/maze{otvet}.tum.txt");
+        string[] tum = File.ReadAllLines($"../../../Res/maze{otvet}.tum.txt");
         int[,] map_tum = new int[tum.Length, tum[0].Split(' ').Length];
         for (i = 0; i < tum.Length; i++)
         {
