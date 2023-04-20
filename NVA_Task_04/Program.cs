@@ -1,9 +1,5 @@
 ﻿
 using NVA_Task_04.Models;
-using System.Diagnostics;
-using System.Drawing;
-using System.Numerics;
-
 class Programm {
 
     private static int step =0;
@@ -30,7 +26,6 @@ class Programm {
         var guard1 = new Guardians("Вася");
         var guard2 = new Guardians("Петя");
         var guard3 = new Guardians("Кирилл");
-        var countDungeon = 4;
 
         var textDungeon = new List<String>();
         textDungeon.Add("1) Подземелье Гордости;");
@@ -72,7 +67,6 @@ class Programm {
                 Environment.Exit(0);
             }
         }
-        Console.ReadKey(true);
     }
     static void Player_VS_Boss(Player player, Boss opponent)
     {
