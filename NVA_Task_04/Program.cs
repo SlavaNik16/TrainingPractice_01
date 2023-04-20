@@ -209,7 +209,7 @@ class Programm {
         Console.WriteLine($"\n\tИгрок - {player.Name}" + $"\t\t\tБОСС - {opponent.Name}\n" +
           $"\tЗдоровье - {player.HP}" + $"\t\t\tЗдоровье - {opponent.HP}\n" +
           $"\tАтака - {player.Attack}" + $"\t\t\tАтака - {opponent.Attack}\n" +
-          $"\tМана - {player.MP}" + $"\t\t\tМана - {String.Format("{0:1}",opponent.MP)}\n");
+          $"\tМана - {player.MP}" + $"\t\t\tМана - {String.Format("{0:0.0}",opponent.MP)}\n");
     }
     static void ShowCharacterWithGuart(Player player, Guardians opponent)
     {

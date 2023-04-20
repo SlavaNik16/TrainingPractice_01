@@ -77,14 +77,14 @@ namespace NVA_Task_04.Models
                     if (attackUp == 1 && MP >= 30)
                     {
 
-                        Console.WriteLine($"\nБосс применяя неизвестную магию(30 маны) и увеличивает свой базовый урон на {10}");
-                        Attack += 10;
+                        Console.WriteLine($"\nБосс применяя неизвестную магию(30 маны) и увеличивает свой базовый урон на {8}");
+                        Attack += 8;
                         MP -= 30;
 
                     }
                     else
                     {
-                        var attack = new Random().Next(2, 5);
+                        var attack = new Random().Next(2, 3);
                         Console.WriteLine($"\nБосс увеличивает свой базовый урон на {attack}");
                         Attack += attack;
                     }
@@ -105,9 +105,9 @@ namespace NVA_Task_04.Models
                     }
                     break;
                 case 9:    
-                    Console.WriteLine($"Босс оглушает вас сильной аттакой в размере {Attack} на {2} хода");
+                    Console.WriteLine($"Босс оглушает вас сильной аттакой в размере {Attack} на {1} хода");
                     player.HP -= Attack;
-                    player.Pass = 2;
+                    player.Pass += 1;
                     break;
 
             }
