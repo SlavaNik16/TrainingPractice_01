@@ -6,7 +6,7 @@ using System.Numerics;
 
 class Programm {
 
-    private static int step = 1;
+    private static int step =0;
     private static int mpRecovery = 3;
     static void Main(string[] arg)
     {
@@ -84,35 +84,56 @@ class Programm {
     static void Player_VS_Guard(Player player, Guardians opponent)
     {
         while (opponent.HP > 0)
-        {
+        {   
+            step += 1;
             Console.WriteLine($"\nНачался {step} день битвы: ");
             if (player.Pass == 0)
             {
                 player.MP += mpRecovery;
                 ShowCharacterWithGuart(player, opponent);
                 Console.WriteLine($"Прочитайте заклинание: {player.getSpells()}");
-                Console.Write("Заклинание: ");   
+                Console.Write("Заклинание: ");
                 Console.ForegroundColor = ConsoleColor.Green;
                 var spell = Console.ReadLine();
                 Console.ForegroundColor = ConsoleColor.Yellow;
                 player.Spells(spell, opponent);
                 Console.ForegroundColor = ConsoleColor.White;
+                if(player.HPStep != 0)
+                {
+                    player.HPStep -= 1;
+                    player.HP += 60;
+                }
             }
             else
             {
                 Console.ForegroundColor = ConsoleColor.Blue;
                 Console.WriteLine("\nИгрок пропускает день.");
-                Console.ForegroundColor = ConsoleColor.White;
+               
                 player.Pass -= 1;
             }
-            Console.ForegroundColor = ConsoleColor.Red;
-            opponent.Spell(player);
-            Console.ForegroundColor = ConsoleColor.White;
+            if (player.Pass >= 0)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                opponent.Spell(player);
+                Console.ForegroundColor = ConsoleColor.White;
+            }
+            else
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("\nСтражник пропускает день. "); 
+                Console.ForegroundColor = ConsoleColor.White;
+                player.Pass += 1;
+            }
             if (player.HP <= 0)
             {
+                if (opponent.HP <= 0)
+                {
+                    Console.WriteLine("На последнем взохе он делает свой последний удар");
+                    Console.WriteLine("И к вашему сожалению удар пришелся по сердцу!");
+                }
                 End();
             }
-            step += 1;
+
         }
     }
     static void Run()

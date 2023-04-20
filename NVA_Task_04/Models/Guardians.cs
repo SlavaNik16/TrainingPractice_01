@@ -24,11 +24,11 @@ namespace NVA_Task_04.Models
             var rnd = new Random();
             switch (rnd.Next(0, 10))
             {
-                case int n when(n>=0 && n <= 5):
+                case >= 0 and <= 5:
                     Console.WriteLine($"\nСтражник атакует базовой аттакой в размере {Attack}");
                     player.HP -= Attack;
                     break;
-                case int n when (n >= 6 && n <= 7):
+                case >=6 and <=7:
                     var hp = new Random().Next(12, 18);
                     Console.WriteLine($"\nСтражник лечит себя в размере {hp}");
                     HP += hp;
