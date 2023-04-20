@@ -10,7 +10,7 @@ class Program
         Console.WriteLine("Лабиринт:\n1. 20 * 20 - Даже нуб пройдет\n2. 60 * 60 - Придется не легко\n3. 160 * 60 - Даже \"он\" не справится\n4. 100 * 100 - Суицид не выход\nВыберите уровень сложности: ");
         var otvet = Console.ReadLine();
 
-        int i = 0, j = 0;
+        int i, j;
         int n = 0, n1 = 0;
         var wall = '█';
         var player = '☺';
@@ -29,7 +29,7 @@ class Program
             string[] nenushno1 = File.ReadAllLines($"Res/maze{otvet}.Pos.txt");
             string[] nenushno2 = File.ReadAllLines($"Res/maze{otvet}.tum.txt");
         }
-        catch (System.IO.FileNotFoundException)
+        catch (FileNotFoundException)
         {
             Console.WriteLine("Пожалуйста введите число по уровню!!!");
             Environment.Exit(0);
