@@ -8,13 +8,39 @@ namespace NVA_Task_04.Models
 {
     public class Player
     {
+        /// <summary>
+        /// Имя игрока
+        /// </summary>
         public string Name { get; set; }
+        /// <summary>
+        /// Базовая атака игрока
+        /// </summary>
         public int Attack { get; set; }
+        /// <summary>
+        /// Сколько ходов будет повышена атака
+        /// </summary>
         public int AttackStep { get; set; }
+        /// <summary>
+        /// Жизни игрока
+        /// </summary>
         public int HP { get; set; }
+        /// <summary>
+        /// Максимальное кол-во жизней
+        /// </summary>
         public int MaxXP { get; set; }
+        /// <summary>
+        ///  Сколько ходов будет лечится игрок
+        /// </summary>
         public int HPStep { get; set; }
+        /// <summary>
+        ///  Мана игрока
+        /// </summary>
         public int MP { get; set; }
+        /// <summary>
+        ///  Сколько ходов бедет оглушен
+        ///  Если число положительное то оглугшен будет игрок
+        ///  Если трицательное - противник
+        /// </summary>
         public int Pass { get; set; }
 
         public Player(string name)

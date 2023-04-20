@@ -13,6 +13,9 @@ namespace NVA_Task_04.Models
         public int Attack { get; set; }
         public int HP { get; set; }
         public float MP { get; set; }
+        /// <summary>
+        ///  Дополнительный потенциал Босса (восстановление маны за ход)
+        /// </summary>
         public float MPRecovery { get; set; }
 
         public Boss(string name)
@@ -107,7 +110,7 @@ namespace NVA_Task_04.Models
                 case 9:    
                     Console.WriteLine($"Босс оглушает вас сильной аттакой в размере {Attack} на {1} хода");
                     player.HP -= Attack;
-                    player.Pass += 1;
+                    player.Pass = 1;
                     break;
 
             }
