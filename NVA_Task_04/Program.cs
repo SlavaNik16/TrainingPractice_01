@@ -81,7 +81,8 @@ class Programm {
             step += 1;
             Console.WriteLine($"\nНачался {step} день битвы: ");
             player.MP += mpRecoveryPlayer;
-            if (player.Pass == 0)
+            opponent.MP += mpRecoveryBoss + opponent.MPRecovery;
+            if (player.Pass <= 0)
             {
                 AttackStep(player);
                 ShowCharacterWithBoss(player, opponent); 
@@ -135,7 +136,7 @@ class Programm {
             step += 1;
             Console.WriteLine($"\nНачался {step} день битвы: ");
             player.MP += mpRecoveryPlayer;
-            if (player.Pass == 0)
+            if (player.Pass <= 0)
             {
                 AttackStep(player);
                 ShowCharacterWithGuart(player, opponent);
@@ -208,7 +209,7 @@ class Programm {
         Console.WriteLine($"\n\tИгрок - {player.Name}" + $"\t\t\tБОСС - {opponent.Name}\n" +
           $"\tЗдоровье - {player.HP}" + $"\t\t\tЗдоровье - {opponent.HP}\n" +
           $"\tАтака - {player.Attack}" + $"\t\t\tАтака - {opponent.Attack}\n" +
-          $"\tМана - {player.MP}" + $"\t\t\tМана - {opponent.MP}\n");
+          $"\tМана - {player.MP}" + $"\t\t\tМана - {String.Format("{0:1}",opponent.MP)}\n");
     }
     static void ShowCharacterWithGuart(Player player, Guardians opponent)
     {

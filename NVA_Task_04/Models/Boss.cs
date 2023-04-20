@@ -12,7 +12,7 @@ namespace NVA_Task_04.Models
         public string Name { get; set; }
         public int Attack { get; set; }
         public int HP { get; set; }
-        public int MP { get; set; }
+        public float MP { get; set; }
         public float MPRecovery { get; set; }
 
         public Boss(string name)
@@ -20,7 +20,7 @@ namespace NVA_Task_04.Models
             Name = name;
             Attack = new Random().Next(20, 30);
             HP = new Random().Next(900, 1500);
-            MP = 0;
+            MP = 0f;
             MPRecovery = 0f;
         }
 

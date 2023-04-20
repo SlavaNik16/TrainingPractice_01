@@ -33,8 +33,112 @@ namespace NVA_Task_04.Models
             switch (spell.ToUpper())
             {
                 case "ATTACHI":
-                    Console.WriteLine($"Игрок наносит монстру урон в размере {Attack}");
+                    Console.WriteLine($"\nИгрок наносит БОССУ - {enemy.Name} урон в размере {Attack}");
                     enemy.HP -= Attack;
+                    break;
+                case "ATTACHI2":
+                    if (MP >= 10)
+                    {
+                        Console.WriteLine($"\nИгрок наносит БОССУ - {enemy.Name} 2 удара в размере {Attack * 2}");
+                        enemy.HP -= Attack * 2;
+                        MP -= 10;
+                        break;
+                    }
+                    DisadvantageMP();
+                    break;
+                case "ATTACHI3":
+                    if (MP >= 40)
+                    {
+                        Console.WriteLine($"\nИгрок наносит БОССУ - {enemy.Name} три удара в размере {Attack * 3} и повышает свою Аттаку на 2");
+                        enemy.HP -= Attack * 3;
+                        Attack += 2;
+                        MP -= 40;
+                        break;
+                    }
+                    DisadvantageMP();
+                    break;
+                case "ATTACHI4":
+                    if (MP >= 150)
+                    {
+                        Console.WriteLine($"\nИгроки повышает свою атаку на 10 и наносит БОССУ - {enemy.Name} серьезный урон в размере {Attack * 10}");
+                        Attack += 10;
+                        enemy.HP -= Attack * 10;
+                        MP -= 150;
+                        break;
+                    }
+                    DisadvantageMP();
+                    break;
+                case "HELTHA":
+                    if (MP >= 8)
+                    {
+                        var hp = new Random().Next(30, 50);
+                        Console.WriteLine($"\nИгрок восстанавливает себе HP в размере {hp}");
+                        HP += hp;
+                        MP -= 8;
+                        break;
+                    }
+                    DisadvantageMP();
+                    break;
+                case "HELTHA2":
+                    if (MP >= 40)
+                    {
+                        var hp = new Random().Next(60, 100);
+                        Console.WriteLine($"\nИгрок восстанавливает себе HP в размере {hp}. Атака повышена на 2");
+                        Attack += 2;
+                        HP += hp;
+                        MP -= 40;
+                        break;
+                    }
+                    DisadvantageMP();
+                    break;
+                case "HELTHA3":
+                    if (MP >= 150)
+                    {
+                        Console.WriteLine($"\nИгрок полностью восстанавливает свое здоровье. Но аттака понижается на 5");
+                        Attack -= 5;
+                        HP = MaxXP;
+                        MP -= 150;
+                        break;
+                    }
+                    DisadvantageMP();
+                    break;
+                case "STRATEGY":
+                    if (MP >= 30)
+                    {
+                        Console.WriteLine($"\nИгрок наносит оглушающий удар в размере {Attack} и оглушает БОССА на 2 хода");
+                        enemy.HP -= Attack;
+                        Pass -= 2;
+                        MP -= 30;
+                        break;
+                    }
+                    DisadvantageMP();
+                    break;
+                case "STRATEGY2":
+                    if (MP >= 80)
+                    {
+                        Console.WriteLine($"\nИгрок восстанавливает в течении 5 ходов себе 60 xp");
+                        HPStep += 5;
+                        MP -= 80;
+                        break;
+                    }
+                    DisadvantageMP();
+                    break;
+                case "STRATEGY3":
+                    if (MP >= 150)
+                    {
+                        if (AttackStep != 0)
+                        {
+                            Console.WriteLine("Магия не может складываться! Было потрачено половина маны от заклинания");
+                            MP -= 75;
+                            break;
+                        }
+                        Console.WriteLine($"\nИгрок повышает атаку на 100 в течении 5 ходов игрока");
+                        AttackStep += 5;
+                        Attack += 100;
+                        MP -= 150;
+                        break;
+                    }
+                    DisadvantageMP();
                     break;
                 default:
                     Console.WriteLine("Неправильно произнесено заклинание!");
@@ -118,7 +222,7 @@ namespace NVA_Task_04.Models
                 case "STRATEGY":
                     if (MP >= 30)
                     {
-                        Console.WriteLine($"\nИгрок наносит оглушающий удар в размере {Attack} и оглушает противника на 2 хода");
+                        Console.WriteLine($"\nИгрок наносит оглушающий удар в размере {Attack} и оглушает Стражника на 2 хода");
                         enemy.HP -= Attack;
                         Pass -= 2;
                         MP -= 30;
