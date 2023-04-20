@@ -89,6 +89,15 @@ class Programm {
             Console.WriteLine($"\nНачался {step} день битвы: ");
             if (player.Pass == 0)
             {
+                if(player.AttackStep > 0)
+                {
+                    player.AttackStep -= 1;
+                    if(player.AttackStep == 0)
+                    {
+                        Console.WriteLine("Атака игрока понижена на 100. Действие магии прекратилось");
+                        player.Attack -= 100;
+                    }
+                }
                 player.MP += mpRecovery;
                 ShowCharacterWithGuart(player, opponent);
                 Console.WriteLine($"Прочитайте заклинание: {player.getSpells()}");
@@ -97,12 +106,8 @@ class Programm {
                 var spell = Console.ReadLine();
                 Console.ForegroundColor = ConsoleColor.Yellow;
                 player.Spells(spell, opponent);
-                Console.ForegroundColor = ConsoleColor.White;
-                if(player.HPStep != 0)
-                {
-                    player.HPStep -= 1;
-                    player.HP += 60;
-                }
+                Console.ForegroundColor = ConsoleColor.White;           
+                
             }
             else
             {
@@ -111,6 +116,13 @@ class Programm {
                
                 player.Pass -= 1;
             }
+            if (player.HPStep != 0)
+            { 
+                Console.WriteLine($"Игрок восстановил себе 60 xp осталось {player.HPStep -1} ходов");
+                player.HPStep -= 1;
+                player.HP += 60;
+            }
+
             if (player.Pass >= 0)
             {
                 Console.ForegroundColor = ConsoleColor.Red;

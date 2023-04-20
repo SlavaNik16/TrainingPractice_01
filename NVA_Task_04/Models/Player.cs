@@ -10,6 +10,7 @@ namespace NVA_Task_04.Models
     {
         public string Name { get; set; }
         public int Attack { get; set; }
+        public int AttackStep { get; set; }
         public int HP { get; set; }
         public int MaxXP { get; set; }
         public int HPStep { get; set; }
@@ -129,8 +130,25 @@ namespace NVA_Task_04.Models
                     if (MP >= 80)
                     {
                         Console.WriteLine($"\nИгрок восстанавливает в течении 5 ходов себе 60 xp");
-                        HPStep = 5;
+                        HPStep += 5;
                         MP -= 80;
+                        break;
+                    }
+                    DisadvantageMP();
+                    break;
+                case "STRATEGY3":
+                    if (MP >= 150)
+                    {
+                        if(AttackStep != 0)
+                        {
+                            Console.WriteLine("Магия не может складываться! Было потрачено половина маны от заклинания");
+                            MP -= 75;
+                            break;
+                        }
+                        Console.WriteLine($"\nИгрок повышает атаку на 100 в течении 5 ходов игрока");
+                        AttackStep += 5;
+                        Attack += 100;
+                        MP -= 150;
                         break;
                     }
                     DisadvantageMP();
@@ -152,7 +170,7 @@ namespace NVA_Task_04.Models
             text += "\nHeltha3(150 маны) - Восстанавливающая магия высокого уровня: Игрок полностью восстанавливает свое здоровье, но базовая атака понижается на 5";
             text += "\nStrategy(30 маны) - Стратегическая магия простого уровня: Игрок наносит урон протикнику и оглушает его на 2 хода";
             text += "\nStrategy2(80 маны) - Стратегическая магия среднего уровня: Игрок восстанавливает в течении 5 ходов себе 60 xp";
-            text += "\nStrategy3(150 маны) - Стратегическая магия простого уровня: Игрок наносит урон протикнику и оглушает его на 2 хода";
+            text += "\nStrategy3(150 маны) - Стратегическая магия высокого уровня: Игрок повышает атаку на 100 в течении 5 ходов. Не может складываться!!!";
          
             return text;
         }
