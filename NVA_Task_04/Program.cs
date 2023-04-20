@@ -7,7 +7,8 @@ using System.Numerics;
 class Programm {
 
     private static int step =0;
-    private static int mpRecovery = 3;
+    private static int mpRecoveryPlayer = 3;
+    private static float mpRecoveryBoss = 1.5f;
     static void Main(string[] arg)
     {
         Console.WriteLine("Игра - Победи БОССА");
@@ -77,9 +78,55 @@ class Programm {
     {
         while (opponent.HP > 0)
         {
-            ShowCharacterWithBoss(player, opponent);
-            break;
+            step += 1;
+            Console.WriteLine($"\nНачался {step} день битвы: ");
+            player.MP += mpRecoveryPlayer;
+            if (player.Pass == 0)
+            {
+                AttackStep(player);
+                ShowCharacterWithBoss(player, opponent); 
+                Console.WriteLine($"Прочитайте заклинание: {player.getSpells()}");
+                Console.Write("Заклинание: ");
+                Console.ForegroundColor = ConsoleColor.Green;
+                var spell = Console.ReadLine();
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                player.Spells(spell, opponent);
+                Console.ForegroundColor = ConsoleColor.White;
+
+            }
+            else
+            {
+                Console.ForegroundColor = ConsoleColor.Blue;
+                Console.WriteLine("\nИгрок пропускает день.");
+
+                player.Pass -= 1;
+            }
+            HPStep(player);
+
+            if (player.Pass >= 0)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                opponent.Spell(player);
+                Console.ForegroundColor = ConsoleColor.White;
+            }
+            else
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("\nБОСС пропускает день. ");
+                Console.ForegroundColor = ConsoleColor.White;
+                player.Pass += 1;
+            }
+            if (player.HP <= 0)
+            {
+                if (opponent.HP <= 0)
+                {
+                    Console.WriteLine("На последнем взохе он делает свой последний удар");
+                    Console.WriteLine("И к вашему сожалению удар пришелся по сердцу!");
+                }
+                End();
+            }
         }
+        Win();
     }
     static void Player_VS_Guard(Player player, Guardians opponent)
     {
@@ -87,18 +134,10 @@ class Programm {
         {   
             step += 1;
             Console.WriteLine($"\nНачался {step} день битвы: ");
+            player.MP += mpRecoveryPlayer;
             if (player.Pass == 0)
             {
-                if(player.AttackStep > 0)
-                {
-                    player.AttackStep -= 1;
-                    if(player.AttackStep == 0)
-                    {
-                        Console.WriteLine("Атака игрока понижена на 100. Действие магии прекратилось");
-                        player.Attack -= 100;
-                    }
-                }
-                player.MP += mpRecovery;
+                AttackStep(player);
                 ShowCharacterWithGuart(player, opponent);
                 Console.WriteLine($"Прочитайте заклинание: {player.getSpells()}");
                 Console.Write("Заклинание: ");
@@ -116,12 +155,7 @@ class Programm {
                
                 player.Pass -= 1;
             }
-            if (player.HPStep != 0)
-            { 
-                Console.WriteLine($"Игрок восстановил себе 60 xp осталось {player.HPStep -1} ходов");
-                player.HPStep -= 1;
-                player.HP += 60;
-            }
+            HPStep(player);
 
             if (player.Pass >= 0)
             {
@@ -160,6 +194,13 @@ class Programm {
         Environment.Exit(0);
     }
 
+    static void Win()
+    {
+        Console.WriteLine($"Поздравляю вы победили сильнейшего БОССА за {step} дней!\n" +
+            $"Но можно сделать результат выше и пройти за меньшее кол-во дней!\n" +
+            $"Ваши достижения буду записаны в истории!\nДо скорой встречи!");
+    }
+
 
 
     static void ShowCharacterWithBoss(Player player,  Boss opponent)
@@ -175,5 +216,27 @@ class Programm {
           $"\tЗдоровье - {player.HP}" + $"\t\t\tЗдоровье - {opponent.HP}\n" +
           $"\tАтака - {player.Attack}" + $"\t\t\tАтака - {opponent.Attack}\n" +
           $"\tМана - {player.MP}\n");
+    }
+
+    static void AttackStep(Player player)
+    {
+        if (player.AttackStep > 0)
+        {
+            player.AttackStep -= 1;
+            if (player.AttackStep == 0)
+            {
+                Console.WriteLine("Атака игрока понижена на 100. Действие магии прекратилось");
+                player.Attack -= 100;
+            }
+        }
+    }
+    static void HPStep(Player player)
+    {
+        if (player.HPStep != 0)
+        {
+            Console.WriteLine($"Игрок восстановил себе 60 xp осталось {player.HPStep - 1} ходов");
+            player.HPStep -= 1;
+            player.HP += 60;
+        }
     }
 }
