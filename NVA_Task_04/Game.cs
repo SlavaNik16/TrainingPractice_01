@@ -1,6 +1,6 @@
 ﻿
 using NVA_Task_04.Models;
-class Programm {
+class Game {
 
     private static int step =0;
     private static int mpRecoveryPlayer = 3;

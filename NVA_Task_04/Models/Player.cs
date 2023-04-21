@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace NVA_Task_04.Models
+﻿namespace NVA_Task_04.Models
 {
     public class Player
     {

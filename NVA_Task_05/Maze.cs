@@ -1,5 +1,5 @@
 ﻿
-class Program
+class Maze
 {
     static void Main()
     {
