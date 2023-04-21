@@ -1,7 +1,4 @@
-﻿using System;
-using System.Xml.Xsl;
-
-string[] fio = new string[30];
+﻿string[] fio = new string[30];
 string[] post = new string[30];
 int number;
 int i = 0;
@@ -12,8 +9,8 @@ Console.WriteLine("2 - Вывести все досье");
 Console.WriteLine("3 - Удалить досье");
 Console.WriteLine("4 - Поиск по фамилии");
 Console.WriteLine("5 - Выход\n");
-Console.Write("Выберите пункт меню:");
-if (!int.TryParse(Console.ReadLine(),out number) && number <1 && number >5)
+Console.Write("Выберите пункт меню: ");
+if (!int.TryParse(Console.ReadLine(),out number))
 {
     Console.WriteLine("Вы ввели неправильное значение!");
     Restart();
@@ -36,6 +33,9 @@ switch (number)
     case 5:
         Environment.Exit(0);
         break;
+    default:
+        Console.WriteLine("Таково пункта меню нет!");
+        break;
 }
 
 Restart();
@@ -54,16 +54,15 @@ void AddDossier()
     Console.Write("Введите свою должность: ");
     post[i] = Console.ReadLine();
     i++;
+    Console.WriteLine("Досье успешно создано!");
 }
 
 bool ShowDossier()
 {
     if (fio[0] != null) {
-        for (var j = 0; j < fio.Length; j++)
+        for (var j = 0; j < i; j++)
         {
-            Console.WriteLine($"{j+1}) {fio[j].Trim()} - {post[j].Trim()}");
-            if (fio[j + 1] == null)return true;
-            
+            Show(j);        
         }
         return true;
     }
@@ -106,13 +105,12 @@ void SearchSurname()
     Console.Write("Введите фамилию, которую вы хотите найти: ");
     var textSurname = Console.ReadLine();
     string[] surname = new string[30];
-    for (var j = 0; j < fio.Length; j++)
+    for (var j = 0; j < i; j++)
     {
-        if (fio[j] == null)break;
         surname = fio[j].Split(" ");
         if (surname[0].Trim() == textSurname.Trim())
         {
-            Console.WriteLine($"{j + 1}) {fio[j].Trim()} - {post[j].Trim()}");
+            Show(j);
         }
     }
 
@@ -123,4 +121,10 @@ void Restart()
     Console.WriteLine("Нажмите любую клавишу...");
     Console.ReadKey(true);
     Console.Clear();
+}
+
+void Show(int j)
+{
+    if (post[j].Trim().Length == 0) post[j] = "Нет";
+    Console.WriteLine($"{j + 1}) {fio[j].Trim()} - {post[j].Trim()}");
 }
