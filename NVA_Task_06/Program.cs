@@ -37,7 +37,6 @@ switch (number)
         Console.WriteLine("Таково пункта меню нет!");
         break;
 }
-
 Restart();
 goto restart;
 

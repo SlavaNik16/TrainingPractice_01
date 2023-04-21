@@ -8,7 +8,7 @@ class Maze
         Console.WriteLine("Псевдо игра: Лабиринт\nЦель игры: Дойти до конца!");
         Console.WriteLine("\tW - наверх\nA - влево S - вниз D - вправо\nEsc - Выход из игры\nP - Сдаться и посмотреть путь до конца\n");
         Console.WriteLine("Лабиринт:\n1. 20 * 20 - Даже нуб пройдет\n2. 60 * 60 - Придется не легко\n3. 160 * 60 - Даже \"он\" не справится\n4. 100 * 100 - Суицид не выход\nВыберите уровень сложности: ");
-        var otvet = Console.ReadLine();
+        var answer = Console.ReadLine();
 
         int i, j;
         int n = 0, n1 = 0;
@@ -25,9 +25,9 @@ class Maze
 
         try
         {
-            string[] nenushno = File.ReadAllLines($"../../../Res/maze{otvet}.txt");
-            string[] nenushno1 = File.ReadAllLines($"../../../Res/maze{otvet}.Pos.txt");
-            string[] nenushno2 = File.ReadAllLines($"../../../Res/maze{otvet}.tum.txt");
+            string[] nenushno = File.ReadAllLines($"../../../Res/maze{answer}.txt");
+            string[] nenushno1 = File.ReadAllLines($"../../../Res/maze{answer}.Pos.txt");
+            string[] nenushno2 = File.ReadAllLines($"../../../Res/maze{answer}.tum.txt");
         }
         catch (FileNotFoundException)
         {
@@ -35,7 +35,7 @@ class Maze
             Environment.Exit(0);
         }
 
-        string[] str = File.ReadAllLines($"../../../Res/maze{otvet}.txt");
+        string[] str = File.ReadAllLines($"../../../Res/maze{answer}.txt");
         int[,] map = new int[str.Length, str[0].Split(' ').Length];
         for (i = 0; i < str.Length; i++)
         {
@@ -45,7 +45,7 @@ class Maze
             n = str2.Length;
         }
 
-        string[] pos = File.ReadAllLines($"../../../Res/maze{otvet}.Pos.txt");
+        string[] pos = File.ReadAllLines($"../../../Res/maze{answer}.Pos.txt");
         int[,] map_pos = new int[pos.Length, pos[0].Split(' ').Length];
         for (i = 0; i < pos.Length; i++)
         {
@@ -55,7 +55,7 @@ class Maze
             n1 = pos2.Length;
         }
 
-        string[] tum = File.ReadAllLines($"../../../Res/maze{otvet}.tum.txt");
+        string[] tum = File.ReadAllLines($"../../../Res/maze{answer}.tum.txt");
         int[,] map_tum = new int[tum.Length, tum[0].Split(' ').Length];
         for (i = 0; i < tum.Length; i++)
         {
@@ -257,7 +257,7 @@ class Maze
             map_tum[playerX + 1, playerY - 1] = 0;
             map_tum[playerX - 1, playerY - 1] = 0;
 
-            if (!hint && otvet != "-1")
+            if (!hint && answer != "-1")
             {
                 Console.SetCursorPosition(0, 0);
                 for (i = 0; i < str.Length; i++)
@@ -269,7 +269,7 @@ class Maze
                         {
                             indexX = i;
                             indexY = j;
-                            if (map_tum[i, j] != 1 && otvet != "4")
+                            if (map_tum[i, j] != 1 && answer != "4")
                             {
                                 Console.ForegroundColor = ConsoleColor.Red;
                                 Console.Write(end);
@@ -284,7 +284,7 @@ class Maze
                         }
                         else if (map[i, j] == 2)
                         {
-                            if (map_tum[i, j] == 1 && otvet != "4")
+                            if (map_tum[i, j] == 1 && answer != "4")
                             {
                                 Console.Write(' ');
                             }
@@ -297,7 +297,7 @@ class Maze
                         }
                         else if (map[i, j] == 1)
                         {
-                            if (map_tum[i, j] == 1 && otvet != "4")
+                            if (map_tum[i, j] == 1 && answer != "4")
                             {
                                 Console.Write(' ');
                             }
@@ -309,7 +309,7 @@ class Maze
                         }
                         else if (map[i, j] == 0)
                         {
-                            if (map_tum[i, j] == 1 && otvet != "4")
+                            if (map_tum[i, j] == 1 && answer != "4")
                             {
                                 Console.Write(' ');
                             }
@@ -326,7 +326,7 @@ class Maze
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.Write(player);
                 Console.ForegroundColor = ConsoleColor.White;
-                if (otvet == "4") otvet = "-1";
+                if (answer == "4") answer = "-1";
             }
 
             if (((indexX == playerX) && (indexY == playerY)) || (key.KeyChar == 27))//Esc
@@ -341,19 +341,19 @@ class Maze
         }
         Console.SetCursorPosition(x, y += 2);
         Console.WriteLine();
-        if (otvet == "1" && !hint && !exit)
+        if (answer == "1" && !hint && !exit)
         {
             Console.WriteLine("Поздравляю! Вы прошли обучение!");
         }
-        else if (otvet == "2" && !hint && !exit)
+        else if (answer == "2" && !hint && !exit)
         {
             Console.WriteLine("Поздравляю! Вы прошли средний уровень!");
         }
-        else if (otvet == "3" && !hint && !exit)
+        else if (answer == "3" && !hint && !exit)
         {
             Console.WriteLine("Поздравляю! Вы прошли HARD уровень! Вы сейчас потратили кучу времени на эту игру!");
         }
-        else if (otvet == "4" && !hint && !exit)
+        else if (answer == "4" && !hint && !exit)
         {
             Console.WriteLine("Поздравляю! Вы прошли HARD-Dop уровень! Вы сейчас потратили кучу времени на эту игру!");
         }

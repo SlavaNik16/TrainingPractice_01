@@ -1,9 +1,6 @@
-﻿
-using System.Runtime.CompilerServices;
-
-var rnd = new Random();
+﻿var rnd = new Random();
 Console.Write("Введите кол-во золота:");
-int gold = 0;
+int gold;
 
 while(!int.TryParse(Console.ReadLine(), out gold) || gold <= 0)
 {
@@ -15,7 +12,7 @@ int maxCount = gold / priceCrystal;
 Console.Write($"Алмаз стоит {priceCrystal} золота.\n" +
     $"Сколько кристаллов вы хотите приобрести(максимум можно - {maxCount}): ");
 
-int countCrystal = 0;
+int countCrystal;
 while(!int.TryParse(Console.ReadLine(), out countCrystal) || countCrystal < 0)
 {
     Console.WriteLine("Неправильно введенные данные");
@@ -25,8 +22,7 @@ while(countCrystal <= maxCount && countCrystal!=0)
 {
     gold -= priceCrystal * countCrystal;
     Console.WriteLine($"Сделка успешно завершена!\nУ вас осталось:\nЗолота: {gold}\nКристаллов: {countCrystal}");
-    Environment.Exit(0);
-      
+    Environment.Exit(0);  
 }
 Console.WriteLine($"Сделка закончилась неудачно!\nУ вас было:\nЗолота: {gold}\nКристаллов: {0}");
 
