@@ -19,7 +19,7 @@
             switch (rnd.Next(0, 10))
             {
                 case >= 0 and <= 5:
-                    Console.WriteLine($"\nСтражник атакует базовой аттакой в размере {Attack}");
+                    Console.WriteLine($"\nСтражник атакует базовой атакой в размере {Attack}");
                     player.HP -= Attack;
                     break;
                 case >=6 and <=7:
@@ -33,7 +33,7 @@
                     Attack += attack;
                     break;
                 case 9:
-                    Console.WriteLine($"\nСтражник атакует базовой аттакой в размере {Attack}. Удар пришелся по голове!\n");
+                    Console.WriteLine($"\nСтражник атакует базовой атакой в размере {Attack}. Удар пришелся по голове!\n");
                     Console.WriteLine($"Стражник оглушает вас на {1} ход");
                     player.HP -= Attack;
                     player.Pass = 1;

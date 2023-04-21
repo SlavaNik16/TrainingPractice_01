@@ -107,7 +107,7 @@ namespace NVA_Task_04.Models
                     }
                     break;
                 case 9:    
-                    Console.WriteLine($"Босс оглушает вас сильной аттакой в размере {Attack} на {1} хода");
+                    Console.WriteLine($"Босс оглушает вас сильной атакой в размере {Attack} на {1} хода");
                     player.HP -= Attack;
                     player.Pass = 1;
                     break;

@@ -69,7 +69,7 @@
                 case "ATTACHI3":
                     if (MP >= 40)
                     {
-                        Console.WriteLine($"\nИгрок наносит БОССУ - {enemy.Name} три удара в размере {Attack * 3} и повышает свою Аттаку на 2");
+                        Console.WriteLine($"\nИгрок наносит БОССУ - {enemy.Name} три удара в размере {Attack * 3} и повышает свою Атаку на 2");
                         enemy.HP -= Attack * 3;
                         Attack += 2;
                         MP -= 40;
@@ -114,7 +114,7 @@
                 case "HELTHA3":
                     if (MP >= 150)
                     {
-                        Console.WriteLine($"\nИгрок полностью восстанавливает свое здоровье. Но аттака понижается на 5");
+                        Console.WriteLine($"\nИгрок полностью восстанавливает свое здоровье. Но атака понижается на 5");
                         Attack -= 5;
                         HP = MaxXP;
                         MP -= 150;
@@ -187,7 +187,7 @@
                 case "ATTACHI3":
                     if (MP >= 40)
                     {
-                        Console.WriteLine($"\nИгрок наносит Стражнику - {enemy.Name} три удара в размере {Attack*3} и повышает свою Аттаку на 2");
+                        Console.WriteLine($"\nИгрок наносит Стражнику - {enemy.Name} три удара в размере {Attack*3} и повышает свою Атаку на 2");
                         enemy.HP -= Attack*3;
                         Attack += 2;
                         MP -= 40;
@@ -231,7 +231,7 @@
                 case "HELTHA3":
                     if (MP >= 150)
                     {
-                        Console.WriteLine($"\nИгрок полностью восстанавливает свое здоровье. Но аттака понижается на 5");
+                        Console.WriteLine($"\nИгрок полностью восстанавливает свое здоровье. Но атака понижается на 5");
                         Attack -= 5;
                         HP = MaxXP;
                         MP -= 150;
